@@ -1,0 +1,4 @@
+test:
+  base_url: 'https://cphs-api.schoolzilla.com'
+  school_name_url: 'https://cphs-api.schoolzilla.com/schools?school=Aspire'
+  cdscode_url: 'https://cphs-api.schoolzilla.com/school/01612590120188'
