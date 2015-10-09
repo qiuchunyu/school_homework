@@ -5,7 +5,10 @@
 
 #### Mac OSX
     # install rvm (ruby version manager) and ruby
-    \curl -sSL https://get.rvm.io | bash -s stable --ruby
+    \curl -sSL https://get.rvm.io | bash -s stable
+    source ~/.rvm/scripts/rvm
+    # install ruby
+    rvm install ruby
     # install bundler
     gem install bundler
 
