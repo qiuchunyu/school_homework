@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-group(:test) do
-  gem 'cucumber'
-  gem 'rspec'
-  gem 'minitest'
-  gem 'rest-client'
-  gem 'pry'
-end
+gem 'cucumber'
+gem 'rspec'
+gem 'rest-client'
+gem 'test-unit'
+gem 'pry'

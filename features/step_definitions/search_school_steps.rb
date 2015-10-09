@@ -1,6 +1,6 @@
 require 'pry'
-require 'minitest/autorun'
 require 'rest_client'
+require 'rspec'
 require 'json'
 
 Given /^I send a request to CHS API with (.*)$/ do |params|
@@ -9,7 +9,7 @@ Given /^I send a request to CHS API with (.*)$/ do |params|
   elsif params == 'CDSCode'
     url = $CDSCODE_URL
   else
-    puts 'Unknown api request param'
+    puts 'Unexpected api request param'
   end
 
   response = RestClient.get("#{url}")
@@ -21,31 +21,30 @@ Given /^I send a request to CHS API with (.*)$/ do |params|
   end
 end
 
-Then /^I should receive schools that match the name$/ do
-  @data['data'].each do |school|
-    if school['School'].include?('Aspire')
-      address = "#{school['Street']} \n\t\t#{school['City']}, #{school['State']} #{school['Zip']}"
-      print_school_information(school['School'], school['EILName'], school['Website'], address)
-    else
-      puts 'No school match the name: Aspire'
-    end
-  end
-end
+Then /^I should receive (schools|a school) that match the (.*)$/ do |list, search_param|
+  school_list = Array.new() {Hash.new}
 
-Then /^I should receive a school that match the code$/ do
-  if @data['CDSCode']== '01612590120188'
-    address = "#{@data['Street']} \n\t\t#{@data['City']}, #{@data['State']} #{@data['Zip']}"
-    print_school_information(@data['School'], @data['EILName'], @data['Website'], address)
-    puts '======================================================'
-  else
-    puts 'Unable to find the school with the CDSCode'
+  if search_param == 'code' && @data['data'] == nil
+    school_list.push(@data)
+    school_list.size.should == 1
+  elsif search_param == 'name'
+    school_list = @data['data']
+  end
+
+  school_list.each do |school|
+    if list == 'schools'
+     school['School'].should include('Aspire')
+    else
+     school['CDSCode'].should eql('01612590120188')
+    end
+    address = "#{school['Street']} \n\t\t#{school['City']}, #{school['State']} #{school['Zip']}"
+    print_school_information(school['School'], school['EILName'], school['Website'], address)
   end
 end
 
 private
 
 def print_school_information(name, type, website, address)
-  # address = ''
   puts 'School Name: ' + name
   puts 'School Type: ' + type
   puts 'Website: '     + website
