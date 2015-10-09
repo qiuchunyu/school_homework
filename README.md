@@ -1,11 +1,14 @@
 # school_homework
+
 ## Part I - Environment set up and test run instruction
 ### 1. Install necessary tools
+
 #### Mac OSX
     # install rvm (ruby version manager) and ruby
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
     # install bundler
     gem install bundler
+
 #### Ubuntu
     # install dependencies
     sudo apt-get update
@@ -16,6 +19,9 @@
     source ~/.rvm/scripts/rvm
     # check ruby version
     ruby -v
+    # install bundler
+    gem install bundler
+    
 ### 2. Tests run command
     # run all tests
     cucumber
