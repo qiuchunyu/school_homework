@@ -11,6 +11,8 @@
     rvm install ruby
     # install bundler
     gem install bundler
+    # install all needed gems
+    bundle install
 
 #### Ubuntu
     # install dependencies
@@ -24,7 +26,9 @@
     ruby -v
     # install bundler
     gem install bundler
-    
+    # install all needed gems
+    bundle install
+
 ### 2. Tests run command
     # run all tests
     cucumber
