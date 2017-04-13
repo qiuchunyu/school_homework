@@ -1,4 +1,4 @@
-Feature: As an API client, I should be able to search school by school name and CDSCode
+Feature:
 
   Scenario: Search by name
     Given I send a request to CHS API with school name
