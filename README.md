@@ -29,11 +29,14 @@
     # install all needed gems
     bundle install
 
-### 2. Tests run command
+### 2. Cucumber tests run command (NOT for Rspec)
     # run all tests
     cucumber
     # run one feature file
     cucumber features/search_school.feature
     # run a specific scenario
     cucumber features/search_school.feature:line number of the scenario
-   
+
+### 3. Rspec tests run command (Lancope)
+    # run all tests
+    rspec single_list_test.rb   
