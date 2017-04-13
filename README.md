@@ -37,6 +37,6 @@
     # run a specific scenario
     cucumber features/search_school.feature:line number of the scenario
 
-### 3. Rspec tests run command (Lancope)
+### 3. Rspec tests run command (Singly Linked List)
     # run all tests
     rspec single_list_test.rb   
